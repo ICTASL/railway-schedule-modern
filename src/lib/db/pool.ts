@@ -26,8 +26,11 @@ function getPool(): Pool {
       decimalNumbers: true,
     });
     // Defence in depth: even if the account has write rights, this app's sessions cannot write.
+    // Unsupported on MySQL < 5.6 (no SESSION TRANSACTION READ ONLY) — degrade instead of breaking every query.
     pool.pool.on('connection', (connection) => {
-      connection.query('SET SESSION TRANSACTION READ ONLY');
+      connection.query('SET SESSION TRANSACTION READ ONLY', (error) => {
+        if (error) console.error('[db] could not set session read-only (older MySQL?)', error.message);
+      });
     });
     globalForPool.__slrPool = pool;
   }
