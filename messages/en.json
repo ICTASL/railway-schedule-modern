@@ -1,0 +1,157 @@
+{
+  "help": {
+    "title": "Help",
+    "intro": [
+      "Welcome to the Online Train Schedule Service offered by the Sri Lanka Railways (SLR).",
+      "This service allows viewing train schedules with time/station details and ticket prices according to the search criteria.",
+      "Please provide start and end railway stations as mandatory details to search for train schedules."
+    ],
+    "procedureTitle": "Search Train Schedule Procedure",
+    "steps": [
+      "Select the start station from the drop-down",
+      "Then select the end station from the drop-down",
+      "If you wish, you can select a start and end time",
+      "Select a search date from the calendar",
+      "Then click the “Search” button"
+    ],
+    "outputsIntro": "The system will display the train timetable with the following details",
+    "direct": {
+      "title": "Direct Trains",
+      "items": [
+        "Arrival time",
+        "Departure time",
+        "Destination / Time",
+        "End station / Time",
+        "Frequency",
+        "Name",
+        "Type",
+        "Available classes",
+        "Train number"
+      ]
+    },
+    "connecting": {
+      "title": "Connecting Trains (if available) – same details as above"
+    },
+    "prices": {
+      "title": "Ticket Prices",
+      "items": [
+        "Class name",
+        "Price (Rs.)",
+        "Total distance"
+      ]
+    },
+    "footer": "For additional information please read the FAQ and the instructions in the relevant screens of the service.",
+    "open": "Help"
+  },
+  "search": {
+    "title": "Search Train",
+    "startStation": "Start Station",
+    "endStation": "End Station",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "date": "Search Date",
+    "submit": "Search",
+    "reset": "Reset",
+    "errors": {
+      "startStationNotSelected": "Start station not selected",
+      "endStationNotSelected": "End station not selected",
+      "startNotBeforeEnd": "Start time cannot be greater than or equal to end time",
+      "sameStation": "Start station cannot be same as end station",
+      "invalidDate": "Enter a valid date",
+      "invalidTime": "Choose a time from the list"
+    },
+    "mandatory": "<flag>*</flag> marked fields are mandatory",
+    "select": "Select",
+    "noMatches": "No matching stations"
+  },
+  "result": {
+    "title": "Search Result",
+    "back": "Back",
+    "connecting": {
+      "more": "More",
+      "less": "Less",
+      "title": "Connecting Trains",
+      "headers": {
+        "startStation": "Your Station",
+        "arrivalTime": "Arrival Time",
+        "departureTime": "Departure Time",
+        "destination": "Destination",
+        "arrivalTimeDestination": "Arrival Time at Destination"
+      },
+      "trainList": "Trains List",
+      "legHeaders": {
+        "startStation": "Your Station",
+        "startTime": "Start Time",
+        "endStation": "End Station",
+        "endTime": "End Time",
+        "name": "Name",
+        "trainNo": "Train No",
+        "availableClasses": "Available Classes"
+      },
+      "transitNote": "<flag>T</flag> denotes for <b>Transit</b>"
+    },
+    "query": "Search results from <b>{from}</b> to <b>{to}</b> on <b>{date}</b> between <b>{startTime} Hrs</b> and <b>{endTime} Hrs</b>",
+    "direct": {
+      "title": "Direct Trains",
+      "headers": {
+        "startStation": "Your Station",
+        "arrivalTime": "Arrival Time",
+        "departureTime": "Departure Time",
+        "destinationAndTime": "Destination / Time",
+        "endStationAndTime": "End Station / Time",
+        "frequency": "Frequency",
+        "name": "Name",
+        "type": "Type"
+      },
+      "availableClasses": "Available Classes",
+      "endsAt": "<b>Train ends at</b> {station} <b>at</b> {time}",
+      "trainNo": "Train No"
+    },
+    "price": {
+      "title": "Ticket Prices",
+      "className": "Class Name",
+      "price": "Price (Rs.)",
+      "totalDistance": "Total Distance"
+    },
+    "messages": {
+      "found": "{count} Train(s) available",
+      "none": "There are no trains available",
+      "viaJunction": "Search {from} to {junction} and then {junction} to {to}",
+      "separator": " – "
+    }
+  },
+  "error": {
+    "title": "Error",
+    "system": "System error occurred. Please contact system administrator.",
+    "retry": "Try again",
+    "backToSearch": "Back to search"
+  },
+  "common": {
+    "copyright": "Powered by Sri Lanka Railways",
+    "source": "Source - Sri Lanka Railways",
+    "skipToContent": "Skip to main content",
+    "close": "Close",
+    "language": "Language",
+    "textSize": {
+      "increase": "Increase text size",
+      "decrease": "Decrease text size",
+      "reset": "Reset text size"
+    },
+    "share": "Share this page",
+    "copyrightNotice": "© 2011 Sri Lanka Railways (SLR). All rights reserved. Sri Lanka Railways, Colombo 10, Sri Lanka.",
+    "developedWith": "Developed in association with",
+    "govAlt": "Sri Lanka Government portal",
+    "gicAlt": "Government Information Centre",
+    "ictaAlt": "ICTA",
+    "railwayBannerAlt": "Sri Lanka Railways",
+    "hotlineBanner": "Government information and services hotline 1919"
+  },
+  "nav": {
+    "home": "Home",
+    "slrHome": "Sri Lanka Railways Home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist."
+  }
+}

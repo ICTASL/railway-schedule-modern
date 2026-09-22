@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sri Lanka Railways">
+  <rect width="64" height="64" rx="12" fill="#33559b"/>
+  <rect x="16" y="12" width="32" height="34" rx="6" fill="#fff"/>
+  <rect x="20" y="17" width="24" height="12" rx="2" fill="#33559b"/>
+  <circle cx="24" cy="38" r="3" fill="#33559b"/>
+  <circle cx="40" cy="38" r="3" fill="#33559b"/>
+  <path d="M22 46l-6 8M42 46l6 8" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+</svg>
