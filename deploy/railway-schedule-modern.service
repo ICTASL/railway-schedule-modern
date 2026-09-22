@@ -1,0 +1,16 @@
+[Unit]
+Description=SLR Train Schedule (Next.js)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/railway-schedule-modern
+EnvironmentFile=/etc/railway-schedule-modern.env
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/npm run start
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
