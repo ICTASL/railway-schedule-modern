@@ -10,7 +10,7 @@ const handleI18nRouting = createIntlMiddleware(routing);
  */
 const DEFAULT_FRAME_ANCESTORS = "'self' https://cp.lankagate.gov.lk";
 
-function buildCsp(nonce: string): string {
+function buildCsp(nonce: string, isHttps: boolean): string {
   const isDev = process.env.NODE_ENV !== 'production';
   const frameAncestors = (process.env.FRAME_ANCESTORS ?? DEFAULT_FRAME_ANCESTORS).trim();
   return [
@@ -26,13 +26,22 @@ function buildCsp(nonce: string): string {
     "base-uri 'self'",
     "form-action 'self'",
     `frame-ancestors ${frameAncestors}`,
-    ...(isDev ? [] : ['upgrade-insecure-requests']),
+    // Only tell the browser to upgrade sub-resource requests when we're actually reachable over
+    // HTTPS (directly, or via a proxy that sets X-Forwarded-Proto). Sending this to a client that
+    // hit us over plain HTTP - e.g. testing straight against the app's internal port - makes every
+    // asset request rewrite itself to https:// on a port with no TLS listener and fail outright.
+    ...(!isDev && isHttps ? ['upgrade-insecure-requests'] : []),
   ].join('; ');
+}
+
+function isHttpsRequest(request: NextRequest): boolean {
+  return request.headers.get('x-forwarded-proto') === 'https' || request.nextUrl.protocol === 'https:';
 }
 
 export default function middleware(request: NextRequest): NextResponse {
   const nonce = btoa(crypto.randomUUID());
-  const csp = buildCsp(nonce);
+  const isHttps = isHttpsRequest(request);
+  const csp = buildCsp(nonce, isHttps);
 
   // Next.js reads the nonce from the *request's* CSP header and stamps it on its scripts.
   const requestHeaders = new Headers(request.headers);
@@ -41,6 +50,9 @@ export default function middleware(request: NextRequest): NextResponse {
 
   const response = handleI18nRouting(new NextRequest(request, { headers: requestHeaders }));
   response.headers.set('content-security-policy', csp);
+  if (isHttps) {
+    response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains');
+  }
   return response;
 }
 
